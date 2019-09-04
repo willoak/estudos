@@ -1,5 +1,5 @@
 import React, {Fragment, Component} from 'react';
-import {StyleSheet,View,Text,TextInput,Button, Image} from 'react-native';
+import {StyleSheet,View,Text,TextInput,Button, Image, ScrollView} from 'react-native';
 import { bold } from 'ansi-colors';
 
 export default class App extends Component {
@@ -24,7 +24,7 @@ export default class App extends Component {
     if(t.length > 0) {
       s.texto = 'Olá, ' + t;
     } else {
-      s.texto = '';
+      s.texto = ' ';
     }
     this.setState(s);
   }
@@ -60,6 +60,7 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
+        <ScrollView>
         <View style={{padding: 40}}>
           <Text>Mostrar texto digitado</Text>
           <TextInput 
@@ -94,8 +95,9 @@ export default class App extends Component {
         <Text style={[styles.textos,styles.texto1]}>{this.state.texto1}</Text>
         <Image style={styles.guri} source={require('./images/mimimi.jpg')} />
         <Text style={[styles.textos,styles.texto2]}>{this.state.texto2}</Text>
+        <View style={styles.marginAlto}></View>
       </View>
-
+      </ScrollView>
     </Fragment>
     );
 
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
     width: 400,
     height:300,
     marginTop: -70,
-    zIndex: 0
+    zIndex: 0,
   },
   textos: {
     textAlign: 'center',
@@ -139,6 +141,9 @@ const styles = StyleSheet.create({
   },
   texto2: {
     marginTop: -70
-  }
+  },
+  marginAlto: {
+    marginBottom:500
+  },
 });
 
